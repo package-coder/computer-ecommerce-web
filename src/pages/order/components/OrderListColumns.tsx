@@ -13,9 +13,8 @@ function clipStatus(value: number) {
 
 const OrderListColumns: TableGridProps["columns"] = [
   {
-    id: "_id",
-    label: "ID",
-    style: { maxWidth: 100 }
+    id: "orderId",
+    label: "Order ID",
   },
   {
     id: "name",
@@ -32,12 +31,22 @@ const OrderListColumns: TableGridProps["columns"] = [
   {
     id: "createdAt",
     label: "Date",
-    render: (value: any) => <Chip label={moment(value).format('MMMM DD, YYYY')} />
+    render: (value: any) => <span>{moment(value).format('MMMM DD, YYYY')}</span>
   },
   {
     id: 'status',
     label: 'Status',
     render: (value: any) => <Chip label={clipStatus(value)} />
+  },
+  {
+    id: 'totalQuantity',
+    label: 'Quantity',
+    render: (value: any) => <Chip label={value} />
+  },
+  {
+    id: 'totalPrice',
+    label: 'Total',
+    render: (value: any) => <Chip label={`\$${value}`} />
   },
 ];
 
