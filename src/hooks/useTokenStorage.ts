@@ -1,13 +1,11 @@
 
 
-let token: string | null = null
-
-const setToken = (_token: string) => {
-    token = _token
+const setToken = (token: string) => {
+    localStorage.setItem('token', token)
 }
 
 const getToken = () => {
-    return token
+    return localStorage.getItem('token')
 }
 
 export {

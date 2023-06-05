@@ -1,6 +1,7 @@
-import { Chip } from "@mui/material";
+import { Chip, Typography } from "@mui/material";
 import { TableGridProps } from "../../../components/TableGrid";
 import moment from "moment";
+import { startCase } from "lodash";
 
 function clipStatus(value: number) {
   switch(value) {
@@ -16,7 +17,18 @@ const OrderListColumns: TableGridProps["columns"] = [
     label: "ID",
     style: { maxWidth: 100 }
   },
-  
+  {
+    id: "name",
+    label: "Name",
+    style: { paddingLeft: 1 },
+    render: (_: any, row: any) => {
+      return (
+        <Typography fontSize="0.8rem" fontWeight="500">
+          {startCase(`${row?.user?.firstName} ${row?.user?.lastName}`)}
+        </Typography>
+      );
+    },
+  },
   {
     id: "createdAt",
     label: "Date",
@@ -26,10 +38,6 @@ const OrderListColumns: TableGridProps["columns"] = [
     id: 'status',
     label: 'Status',
     render: (value: any) => <Chip label={clipStatus(value)} />
-  },
-  {
-    id: "address",
-    label: 'Address',
   },
 ];
 
