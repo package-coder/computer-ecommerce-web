@@ -11,7 +11,8 @@ const navigations = [
         {
           id: 'Users',
           icon: <PeopleIcon />,
-          path: '/users'
+          path: '/users',
+          show: ({ role }: any) => role == 'ADMIN'
         },
         { 
           id: 'Products', 
@@ -26,7 +27,7 @@ const navigations = [
         { 
           id: 'Orders', 
           icon: <SellIcon />,
-          path: '/orders'
+          path: '/orders',
         },
         // { 
         //   id: 'Hosting', 

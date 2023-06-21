@@ -37,6 +37,7 @@ interface Props extends DrawerProps {
             id: string;
             icon: JSX.Element;
             path: string;
+            show?: (data?: any) => boolean
         }[];
       }
   >,
@@ -53,6 +54,8 @@ const Navigator: React.FC<Props> = (props) => {
     }
 
   });
+
+  console.log(data)
 
 
   return (
@@ -71,18 +74,18 @@ const Navigator: React.FC<Props> = (props) => {
             <ListItemText>Project Overview</ListItemText>
           </ListItemButton> */}
           {navConfig.map(({ id, children }) => (
-              children.map(({ id: childId, icon, path }) => (
-                  <ListItem 
-                    disablePadding 
-                    component={NavLink}
-                    key={childId} 
-                    to={path}
-                  >
-                    <ListItemButton disableRipple>
-                      <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText>{childId}</ListItemText>
-                    </ListItemButton>
-                  </ListItem>
+              children.map((item) => (
+                  ((!item?.show || (item?.show && item?.show(data))) && <ListItem 
+                  disablePadding 
+                  component={NavLink}
+                  key={item.id} 
+                  to={item.path}
+                >
+                  <ListItemButton disableRipple>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText>{item.id}</ListItemText>
+                  </ListItemButton>
+                </ListItem>)
               ))
           ))}
         </List>
