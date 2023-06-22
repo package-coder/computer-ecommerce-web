@@ -2,6 +2,7 @@ import Switch from '@mui/material/Switch';
 import React from 'react'
 import { useMutation } from 'react-query';
 import { baseURL } from '../../../api';
+import { getToken } from '../../../hooks/useTokenStorage';
 
 interface Props {
     id: string,
@@ -21,7 +22,8 @@ const ProductSwitch: React.FC<Props> = (props) => {
               method: 'PUT',
               body: JSON.stringify(data), 
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${getToken()}`
               }
             }
           )

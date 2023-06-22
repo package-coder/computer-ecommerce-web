@@ -12,7 +12,7 @@ const navigations = [
           id: 'Users',
           icon: <PeopleIcon />,
           path: '/users',
-          show: ({ role }: any) => role == 'ADMIN'
+          show: (user: any) => user?.role == 'ADMIN'
         },
         { 
           id: 'Products', 

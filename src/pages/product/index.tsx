@@ -12,7 +12,7 @@ const ProductListPage = () => {
 
     const { isLoading, data, refetch, error} = useQuery('products', 
         async () => {
-            const res = await fetch(`${baseURL}/products`, {
+            const res = await fetch(`${baseURL}/shop/products`, {
                 credentials: 'include',
                 headers: { 'authorization': `Bearer ${getToken()}` }
             })

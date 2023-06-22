@@ -12,7 +12,7 @@ const ServiceListPage = () => {
 
     const { isLoading, data, refetch, error} = useQuery('users', 
         async () => {
-            const res = await fetch(`${baseURL}/services`, {
+            const res = await fetch(`${baseURL}/shop/services`, {
                 credentials: 'include',
                 headers: { 'authorization': `Bearer ${getToken()}` }
             })
