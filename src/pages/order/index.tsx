@@ -13,7 +13,7 @@ const OrderListPage = () => {
 
     const { isLoading, data, error} = useQuery('orders', 
         async () => {
-            const res = await fetch(`${baseURL}/orders`, {
+            const res = await fetch(`${baseURL}/orders4provider`, {
                 credentials: 'include',
                 headers: { 'authorization': `Bearer ${getToken()}` }
             })
